@@ -1,121 +1,12 @@
 body, html {
 	background: #2F4F4F;
-	/* fallback for old browsers */
-	/*background: -webkit-linear-gradient(to left, #6C7A89 , #A8CABA); /* Chrome 10-25, Safari 5.1-6 */
-	/*background: linear-gradient(to left, #6C7A89 , #A8CABA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	width: 100vw;
-	height: 100vh;
-	font-family: Courier New;
-	text-align: center;
-	letter-spacing: 0.03em;
-	overflow: hidden;
 }
 
 p {
-	color: #F0F8FF;
-	position: absolute;
-
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	 overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(30, end),
-    blink-caret .5s step-end infinite;
+	display: block;
 }
 
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
-  
-}
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange }
-}
-#icon {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 10px;
-	font-size: 20px;
-	background: #F0F8FF;
-	color: #2F4F4F;
-	width: 20px;
-	text-align: center;
-	text-decoration: none;
-	margin: 15px 21px;
-	border-radius: 50%;
-	cursor: pointer;
-}
-
-#icon .tooltiptext {
-	visibility: hidden;
-	font-size: 12px;
-	width: 12px;
-	background-color: black;
-	color: #fff;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px 5px;
-	margin-left: 5px;
-}
-
-#icon:hover .tooltiptext {
-	visibility: visible;
-}
-
-#resume {
-	visibility: hidden;
-}
-
-.socialMedia {
-	align-items: center;
-	position: fixed;
-	bottom: 0;
-	right: 50%;
-	transform: translate(50%, -10%);
-}
-
-.fa {
-	padding: 10px;
-	font-size: 20px;
-	width: 20px;
-	text-align: center;
-	text-decoration: none;
-	margin: 15px 21px;
-	border-radius: 50%;
-}
-
-.fa:hover {
-	opacity: 0.7;
-}
-
-.fa-facebook {
-	background: #3B5998;
-	color: white;
-}
-
-.fa-linkedin {
-	background: #007bb5;
-	color: white;
-}
-
-.fa-instagram {
-	background: #125688;
-	color: white;
-}
-
-.fa-skype {
-	background: #00aff0;
-	color: white;
-}
-
-.fa-soundcloud {
-	background: #ff5500;
-	color: white;
 }
