@@ -38,13 +38,6 @@ h1, h2 {
     letter-spacing: 7px;
     text-transform: uppercase;
 }
-.boxContainer {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    height: 20px;
-    width: 25px;
-}
 .holder {
     position: absolute;
     height: 50vh;
