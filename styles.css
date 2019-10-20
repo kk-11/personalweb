@@ -23,12 +23,15 @@ main {
 	top: 40px;
 	left: 40px;
 }
-.linkedin {
-	margin-left: 20px;
+.icon {
 	filter: invert(1);
 	height: 2.4em;
 	width: auto;
 }
+.icon:last-of-type {
+	margin-left: 20px;
+}
+
 h1, h2 {
     color: black;
     font-size: 1.6em;
