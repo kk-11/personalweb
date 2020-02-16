@@ -1,0 +1,15 @@
+.view {
+	position: absolute;
+	width: 90vw;
+	height: 90vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@media(min-width: 1300px) {
+	.view {
+		width: 50vh;
+		height: 50vh;
+	}
+}

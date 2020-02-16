@@ -1,0 +1,15 @@
+.line {
+	background: red;
+	width: 100%;
+	transform: translateX(100%);
+	animation: slide forwards 1000ms
+}
+
+@keyframes slide {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
