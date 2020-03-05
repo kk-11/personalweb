@@ -1,8 +1,8 @@
 import React from 'react';
 import { createEmptyArray, getRandomColor } from './utils.js';
-import * as THREE from 'three';
 import Bio from './bio/bio.js';
 import Experiments from './experiments/experiments.js'
+import BurgerMenu from './burgerMenu/burgerMenu.js'
 import s from './App.module.css';
 
 
@@ -11,18 +11,48 @@ export default class App extends React.Component {
 		super(props);
 		const {
 			innerHeight: h,
-			innerWidth: w
+			// innerWidth: w
 		} = window;
+		this.renderLines = this.renderLines.bind(this)
 		const denominator = 21;
 		this.lines = createEmptyArray(denominator)
-		this.lineHeight = h / denominator;
-		this.cloudParticles = [];
+		this.lineHeight = (h / denominator);
+		this.state = {
+			active: false
+		}
+	}
+	componentDidMount() {
+		this.setState({
+			active: true
+		});
+	}
+	renderLines() {
+		return this.lines.map((line, i) => (
+			<div
+				key={i}
+				className={s.line}
+				style={{
+					background: getRandomColor(),
+					height: this.lineHeight,
+					animationDelay: `${i*20}ms`
+				}}
+			>
+				{i}
+			</div>
+		));
 	}
 	render() {
+		console.log(this.state.active)
 		return (
 			<main className={s.app}>
+				<span className={`${s.top} ${this.state.active && s.active}`}></span>
+				<span className={`${s.bottom}  ${this.state.active && s.active}`}></span>
+				<span className={`${s.left}  ${this.state.active && s.active}`}></span>
+				<span className={`${s.right}  ${this.state.active && s.active}`}></span>
 				{true && <Bio />}
-				<Experiments />
+				{false && this.renderLines()}
+				{true && <Experiments />}
+				{false && <BurgerMenu />}
 			</main>
 		);
 	}
