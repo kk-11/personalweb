@@ -45,10 +45,6 @@ export default class App extends React.Component {
 		console.log(this.state.active)
 		return (
 			<main className={s.app}>
-				<span className={`${s.top} ${this.state.active && s.active}`}></span>
-				<span className={`${s.bottom}  ${this.state.active && s.active}`}></span>
-				<span className={`${s.left}  ${this.state.active && s.active}`}></span>
-				<span className={`${s.right}  ${this.state.active && s.active}`}></span>
 				{true && <Bio />}
 				{false && this.renderLines()}
 				{true && <Experiments />}
@@ -58,6 +54,9 @@ export default class App extends React.Component {
 	}
 }
 
-
+// <span className={`${s.top} ${this.state.active && s.active}`}></span>
+// <span className={`${s.bottom}  ${this.state.active && s.active}`}></span>
+// <span className={`${s.left}  ${this.state.active && s.active}`}></span>
+// <span className={`${s.right}  ${this.state.active && s.active}`}></span>
 // EXP #1
 // ref = https://redstapler.co/three-js-realistic-rain-tutorial/

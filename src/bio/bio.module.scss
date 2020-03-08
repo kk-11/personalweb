@@ -5,34 +5,26 @@
 }
 
 .hey {
-	animation: fadeUp 1s forwards;
-	transform: rotateY(-10deg);
-	font-size: 50px
-
+	opacity: 0;
+	transform: translateY(10px);
+	animation: slide 1s forwards;
+	font-size: 50px;
 }
 .word {
-	animation: fadeUp 1s forwards;
-	transform: translateX(100vw);
-	display: inline-block;
-	font-size: 13px
+	opacity: 0;
+	transform: translateY(10px);
+	animation: slide 1s forwards;
+	margin: 0 2px;
+	font-size: 13px;
 }
 
 @keyframes slide {
 	from {
-
-		transform: translateX(100vw);
+		opacity: 0;
+		transform: translateY(10px);
 	}
 	to {
-		filter: blur(0);
-		transform: translateX(0);
-	}
-}
-
-@keyframes fadeUp {
-	from {
-		transform: rotateY(-10deg);
-	}
-	to {
-		transform: rotateY(0);
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

@@ -7,7 +7,7 @@ export default class Experiments extends React.Component {
 		super(props);
 		this.init = this.init.bind(this);
 		this.animate = this.animate.bind(this);
-		
+
 		this.cloudParticles = [];
 	}
 
@@ -48,7 +48,7 @@ export default class Experiments extends React.Component {
 		}
 		const rainMaterial = new THREE.PointsMaterial({
 			color: 0xaaaaaa,
-			size: 0.2,
+			size: 0.01,
 			transparent: true
 		});
 		this.rain = new THREE.Points(this.rainGeo,rainMaterial);
@@ -87,7 +87,7 @@ export default class Experiments extends React.Component {
 
 	animate() {
 		this.cloudParticles.forEach(cloud => {
-			cloud.rotation.z -= 0.002;
+			cloud.rotation.z -= 0.003;
 		});
 
 		this.rainGeo.vertices.forEach(p => {
