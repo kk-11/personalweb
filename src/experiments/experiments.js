@@ -98,6 +98,7 @@ export default class Experiments extends React.Component {
 				p.velocity = 0;
 			}
 		});
+		///test
 		this.rainGeo.verticesNeedUpdate = true;
 		this.rain.rotation.y += 0.02;
 
