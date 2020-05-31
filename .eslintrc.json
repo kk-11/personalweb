@@ -1,6 +1,0 @@
-{
-  "extends": "react-app"
-}
-{
-	"indent": ["error", 2]
-}
