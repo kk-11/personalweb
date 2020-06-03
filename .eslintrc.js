@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
     "env": {
         "browser": true,
         "es6": true
@@ -13,7 +13,8 @@ module.export = {
     },
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "arrowFunctions":true
         },
         "ecmaVersion": 2018,
         "sourceType": "module"
@@ -22,5 +23,6 @@ module.export = {
         "react"
     ],
     "rules": {
-    }
+    },
+    "parser": "babel-eslint"
 };

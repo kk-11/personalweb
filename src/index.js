@@ -12,20 +12,28 @@ function fireGA() {
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.x = 50
-		this.y = 50
+		this.x = 0;
+		this.y = 0;
+		this.handleMouseMove = this.handleMouseMove.bind(this);
+	}
+	componentDidMount() {
+		window.addEventListener('mousemove', this.handleMouseMove);
+	}
+
+	handleMouseMove(evt) {
+		console.log(evt);
+		this.x = evt.clientX;
+		this.y = evt.clientY;
 	}
 
 	setup = (p5, parent) => {
-		p5.createCanvas(500, 500).parent(parent)
+		p5.createCanvas(window.innerWidth, window.innerHeight).parent(parent)
 	}
 	draw = p5 => {
 		p5.background(0)
-		p5.line(30, 200, 285, 20);
+		p5.line(this.x, this.y, 0, 0);
 		p5.stroke(126);
 		p5.strokeWeight(4);
-		p5.ellipse(this.x, this.y, 70, 70)
-		this.x++
 	}
 	render() {
 		return (
