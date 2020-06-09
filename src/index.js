@@ -6,29 +6,24 @@ import './styles.sass';
 
 const settings = {
 	about: {
-		radius: 50,
-		time: -0.1,
-		circle: 8
+		radius: 40,
+		time: -0.1
 	},
 	contact: {
 		radius: 300,
-		time: 0.06,
-		circle: 20
+		time: 0.06
 	},
 	work: {
 		radius: 200,
-		time: -0.1,
-		circle: 2
+		time: -0.1
 	},
 	thoughts: {
 		radius: 0,
-		time: 0,
-		circle: 8
+		time: 0
 	},
 	default: {
 		radius: 100,
-		time: 0.05,
-		circle: 8
+		time: 0.05
 	}
 }
 
@@ -36,6 +31,7 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.time = 0;
+		this.radius = 0;
 		this.wave = [];
 		this.state = {
 			activeSection: 'default'
@@ -46,24 +42,18 @@ export default class App extends React.Component {
 		p5.createCanvas(window.innerWidth, window.innerHeight).parent(parent)
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		console.log(prevState);
-		return null;
-	}
-
 	draw = p5 => {
 		let setting = settings[this.state.activeSection];
 		p5.background('#2c3e50');
 		p5.translate(window.innerWidth/2, window.innerHeight/2);
 		p5.stroke('#ecf0f1');
 		p5.noFill();
-		p5.ellipse(0, 0, setting.radius*2);
-		let x = setting.radius * p5.cos(this.time);
-		let y = setting.radius * p5.sin(this.time);
+		p5.ellipse(0, 0, this.radius*2);
+		let x = this.radius * p5.cos(this.time);
+		let y = this.radius * p5.sin(this.time);
 		this.wave.push(y);
 		p5.fill('#ecf0f1')
-		p5.ellipse(x, y, setting.circle);
-
+		p5.ellipse(x, y, 8);
 		p5.translate(-100, 0);
 		p5.beginShape();
 		p5.noFill();
@@ -72,21 +62,16 @@ export default class App extends React.Component {
 		}
 		p5.endShape();
 		if (this.wave.length > 200) {
-			if (setting.time > 0) {
-				this.wave.shift();
+			this.wave.shift();
+		}
+
+		if (this.radius !== setting.radius) {
+			if (this.radius > setting.radius) {
+				this.radius -= 20;
 			} else {
-				this.wave.pop();
+				this.radius += 20;
 			}
 		}
-		// if (this.state.scaleDown) {
-		// 	if(setting.radius > 0) {
-		// 		setting.radius = setting.radius - 5;
-		// 	}
-		// } else {
-		// 	if(setting.radius < 100) {
-		// 		setting.radius = setting.radius + 5;
-		// 	}
-		// }
 		this.time += setting.time;
 	}
 
