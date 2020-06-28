@@ -40,12 +40,11 @@ export default class App extends React.Component {
 	componentDidMount() {
 		window.addEventListener('mousemove', this.handleMouseMove);
 		const { innerWidth: w, innerHeight: h } = window;
-		console.log(w,h);
 
 	}
 
 	handleMouseMove = (evt) => {
-		console.log(evt.clientX);
+		// console.log(evt.clientX);
 	}
 	setup = (p5, parent) => {
 		p5.createCanvas(window.innerWidth, window.innerHeight).parent(parent)
@@ -86,18 +85,13 @@ export default class App extends React.Component {
 
 
 	render() {
-		const navItems = [ 'about', 'contact', 'work' ];
 		return (
 			<main className='main'>
-				<Sketch className='canvas' setup={this.setup} draw={this.draw} />
-				<nav className='nav'>
-					{navItems.map(item => {
-						return(
-							<span onClick={() => this.setState({activeSection: item})} className='navItem' key={item}>{item}</span>)}
-						)
-					}
-				</nav>
-
+				<div className='circleWrap'>
+					<svg className='circle' width="200" height="200">
+						<circle className="center" cx="100" cy="100" r="35"></circle>
+					</svg>
+				</div>
 			</main>
 		);
 	}
