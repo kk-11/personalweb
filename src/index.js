@@ -37,7 +37,16 @@ export default class App extends React.Component {
 			activeSection: 'default'
 		}
 	}
+	componentDidMount() {
+		window.addEventListener('mousemove', this.handleMouseMove);
+		const { innerWidth: w, innerHeight: h } = window;
+		console.log(w,h);
 
+	}
+
+	handleMouseMove = (evt) => {
+		console.log(evt.clientX);
+	}
 	setup = (p5, parent) => {
 		p5.createCanvas(window.innerWidth, window.innerHeight).parent(parent)
 	}
@@ -77,7 +86,7 @@ export default class App extends React.Component {
 
 
 	render() {
-		const navItems = [ 'about', 'contact', 'work', 'thoughts' ];
+		const navItems = [ 'about', 'contact', 'work' ];
 		return (
 			<main className='main'>
 				<Sketch className='canvas' setup={this.setup} draw={this.draw} />
@@ -88,9 +97,15 @@ export default class App extends React.Component {
 						)
 					}
 				</nav>
+
 			</main>
 		);
 	}
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
+// <svg className='resume' fill='#fff' viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+// 	<path d="m445 93-120-90c-2.548-1.911-5.774-3-9-3h-240c-8.284 0-15 6.716-15 15v482c0 8.284 6.716 15 15 15h360c8.284 0 15-6.716 15-15v-391.894c.019-4.381-2.027-9.126-6-12.106zm-114-48 60 45h-60zm-240 437v-452h210v75c0 8.284 6.716 15 15 15h105v362z"/>
+// </svg>
