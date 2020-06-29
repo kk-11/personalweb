@@ -34,7 +34,9 @@ export default class App extends React.Component {
 		this.radius = 0;
 		this.wave = [];
 		this.state = {
-			activeSection: 'default'
+			activeSection: 'default',
+			overed: false,
+			menuOpen: false
 		}
 	}
 	componentDidMount() {
@@ -83,14 +85,35 @@ export default class App extends React.Component {
 		this.time += setting.time;
 	}
 
-
+	handleMouseDown = () => this.setState({ overed: true });
+	handleMouseUp = () => this.setState({ overed: false });
+	handleTransition = (evt) => {
+		if (this.state.overed && evt.propertyName === 'transform') {
+			this.setState({
+				menuOpen: !this.state.menuOpen
+			});
+		}
+	}
+	handleClose = () => {
+		// console.log('handleClose');
+	}
 	render() {
+		const {
+			overed,
+			menuOpen
+		} = this.state;
 		return (
 			<main className='main'>
-				<div className='circleWrap'>
-					<svg className='circle' width="200" height="200">
-						<circle className="center" cx="100" cy="100" r="35"></circle>
-					</svg>
+				<div className={`menu ${menuOpen && 'open'}`} />
+				<div className={`headerToggle ${(overed) && 'over'}`} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onClick={this.handleClose}>
+					<div className={`x ${menuOpen && 'menuOpen'}`} />
+					<div className='cta'>{menuOpen ? 'Close' : 'Hold'}</div>
+					
+					<div className='circleWrap'>
+						<svg className='circle' width="200" height="200">
+							<circle className="center" cx="100" cy="100" r="35" onTransitionEnd={this.handleTransition}></circle>
+						</svg>
+					</div>
 				</div>
 			</main>
 		);
