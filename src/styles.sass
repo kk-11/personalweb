@@ -25,6 +25,7 @@ body
 		transform: translateY(-100%)
 		transition: transform 2s
 		transition-timing-function: cubic-bezier(.74,0,.24,.99)
+		z-index: 1
 		&.open
 			transform: translateY(0)
 	.headerToggle
@@ -34,6 +35,7 @@ body
 		top: 20px
 		left: 20px
 		cursor: pointer
+		z-index: 2
 		.x
 			transition: transform 666ms, opacity 333ms, drop-shadow 333ms
 			transition-timing-function: cubic-bezier(.74,0,.24,.99)
@@ -55,8 +57,7 @@ body
 				display: block
 				left: 50%
 				background-color: #ecf0f1
-				transition: transform 1.6s
-				transition-timing-function: cubic-bezier(.74,0,.24,.99)
+				transition: transform 1.6s cubic-bezier(.74,0,.24,.99)
 			&:before
 				transform: translate(-50%, -50%) rotate(-45deg)
 			&:after
@@ -90,6 +91,7 @@ body
 			height: 100%
 			position: absolute
 			transition: transform .2s ease-in-out
+			box-sizing: border-box
 			.circle
 				position: absolute
 				left: 50%
@@ -112,3 +114,51 @@ body
 					.center
 						transform: rotate(270deg)
 						stroke-dashoffset: 0!important
+	.wordGallery
+		position: fixed
+		height: 100%
+		width: 100%
+		pointer-events: none
+		transition: transform 666ms cubic-bezier(.74,0,.24,.99)
+		transition-delay: 333ms
+		.word
+			height: 100%
+			width: 100%
+			color: #ecf0f1
+			font-size: 100px
+			letter-spacing: 10px
+			position: absolute
+			display: flex
+			align-items: center
+			justify-content: center
+			left: 50%
+			top: 50%
+			text-transform: uppercase
+			font-weight: bolder
+			filter: drop-shadow(0px 0px 0px white)
+			transition: transform 628ms, filter 628ms
+			pointer-events: none
+			//auto
+			transition: transform 628ms, filter 628ms
+			transition-timing-function: cubic-bezier(.74,0,.24,.99)
+			&.active
+				transform: translate(-50%, -50%)
+				filter: drop-shadow(0px 0px 10px white)
+			&.right
+				transform: translate(200%, -50%)
+			&.left
+				transform: translate(-200%, -50%)
+			&.inactive
+				transform: translate(-50%, -500%)
+				opacity: 0
+	.image, .leaf
+		height: 44vh
+		position: absolute
+		top: 20px
+		right: -160px
+		width: auto
+		filter: drop-shadow(2px 4px 86px black)
+	.leaf
+		top: 70vh
+		left: 0
+		right: initial
