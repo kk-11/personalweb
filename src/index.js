@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 // import Home from './components/home/home.js';
 import { debounce } from './utils';
 // import Sketch from "react-p5";
-import rock from './rock.jpg'
-import leaf from './leaf.jpg'
+import rock from '../assets/rock.jpg'
+import leaf from '../assets/leaf.jpg'
 
 
 import './styles.sass';
-
-
+const Context = React.createContext();
+console.log(Context);
 const words = [ 'Welcome', 'words', 'Memes', 'super', 'xytakjflkajf', 'finalForTesting' ];
 
 const settings = {

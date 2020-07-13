@@ -7,7 +7,7 @@ module.exports = {
 		path: path.join(__dirname, '/dist'),
 		filename: 'index.bundle.js'
 	},
-	stats: false,
+	stats: 'errors-only',
 	devServer: {
 		clientLogLevel: 'silent'
 	},
