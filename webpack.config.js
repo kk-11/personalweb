@@ -1,6 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-
+const isDevelopment = process.env.NODE_ENV === 'development';
 module.exports = {
 	entry: './src/index.js',
 	output: {
@@ -13,6 +14,39 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.module\.s(a|c)ss$/,
+				loader: [
+					isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+				{
+					loader: 'css-loader',
+					options: {
+						modules: true,
+						sourceMap: isDevelopment
+				}
+				},
+				{
+					loader: 'sass-loader',
+					options: {
+						sourceMap: isDevelopment
+					}
+				}
+				]
+			},
+			{
+				test: /\.s(a|c)ss$/,
+				exclude: /\.module.(s(a|c)ss)$/,
+				loader: [
+					isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'css-loader',
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: isDevelopment
+						}
+					}
+				]
+			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
@@ -32,18 +66,17 @@ module.exports = {
 						loader: 'file-loader',
 					}
 				]
-				},
-			{
-				test: /\.sass$/,
-				use: [
-					'style-loader',
-					'css-loader',
-					'sass-loader'
-				]
 			}
 		]
 	},
 	plugins: [
 		new HtmlWebPackPlugin({ template: './src/index.html' }),
+		new MiniCssExtractPlugin({
+			filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+		})
 	],
+	resolve: {
+		extensions: ['.js', '.jsx', '.scss', '.sass']
+	}
 }

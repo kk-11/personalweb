@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import {store } from '../../../store.js'
+// import s from './styles.module.sass';
 
-// import './header.sass';
+import s from './header.module.sass';
 
 
 export default function Header() {
@@ -15,10 +16,10 @@ export default function Header() {
 			dispatch({type : 'TOGGLE_HEADER', payload : { headerOpen : !state.headerOpen }})
 		}
 	}
-
+	console.log(s);
 	return (
 		<header>
-			<div className={`menu ${state.headerOpen && 'open'}`} />
+			<div className={`menu ${state.headerOpen && s.open}`} />
 			<div className={`headerToggle ${(overed) && 'over'}`} onMouseDown={() => toggleOver(true)} onMouseUp={() => toggleOver(false)}>
 				<div className={`x ${state.headerOpen && 'menuOpen'}`} />
 				<div className='cta'>{state.headerOpen ? 'Close' : 'Hold'}</div>

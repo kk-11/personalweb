@@ -8,7 +8,8 @@ import rock from '../assets/rock.jpg'
 import leaf from '../assets/leaf.jpg'
 
 
-import './styles.sass';
+import s from './styles.module.sass';
+console.log(s);
 
 const words = [ 'Welcome', 'words', 'Memes', 'super', 'xytakjflkajf', 'finalForTesting' ];
 //
@@ -146,7 +147,7 @@ function App() {
 	// 	return styleClass;
 	// }
 	return (
-		<main className='main'>
+		<main className={s.main}>
 			<Header />
 
 		</main>
