@@ -1,5 +1,5 @@
 import React from 'react';
-import { joinClasses } from '../../../utils.js';
+import { joinClasses } from '../../utils.js';
 
 import s from './wordGallery.module.sass';
 

@@ -1,5 +1,5 @@
 export function fireGA() {
-	console.log('here', window.gtag);
+	console.log(window.gtag);
 	window.gtag('event', 'xyz');
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { joinClasses } from '../../../utils.js';
-import { store  } from '../../../store.js';
+import { joinClasses } from '../../utils.js';
+import { store  } from '../../store.js';
 
 import s from './header.module.sass';
 
