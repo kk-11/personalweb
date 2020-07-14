@@ -1,7 +1,6 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const isDevelopment = process.env.NODE_ENV === 'development';
+
 module.exports = {
 	entry: './src/index.js',
 	output: {
@@ -9,42 +8,21 @@ module.exports = {
 		filename: 'index.bundle.js'
 	},
 	stats: 'errors-only',
-	devServer: {
-		clientLogLevel: 'silent'
-	},
 	module: {
 		rules: [
 			{
-				test: /\.module\.s(a|c)ss$/,
+				test: /\.module\.sass$/,
 				loader: [
-					isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-				{
-					loader: 'css-loader',
-					options: {
-						modules: true,
-						sourceMap: isDevelopment
-				}
-				},
-				{
-					loader: 'sass-loader',
-					options: {
-						sourceMap: isDevelopment
-					}
-				}
-				]
-			},
-			{
-				test: /\.s(a|c)ss$/,
-				exclude: /\.module.(s(a|c)ss)$/,
-				loader: [
-					isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-					'css-loader',
+					'style-loader',
 					{
-						loader: 'sass-loader',
+						loader: 'css-loader',
 						options: {
-							sourceMap: isDevelopment
+							modules: {
+								localIdentName: '[local]' 
+							}
 						}
-					}
+					},
+					'sass-loader'
 				]
 			},
 			{
@@ -61,22 +39,14 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpe?g|gif)$/i,
-				use: [
-					{
-						loader: 'file-loader',
-					}
-				]
+				loader: 'file-loader'
 			}
 		]
 	},
 	plugins: [
-		new HtmlWebPackPlugin({ template: './src/index.html' }),
-		new MiniCssExtractPlugin({
-			filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-		})
+		new HtmlWebPackPlugin({ template: './src/index.html' })
 	],
 	resolve: {
-		extensions: ['.js', '.jsx', '.scss', '.sass']
+		extensions: ['.js', '.jsx', '.sass']
 	}
 }

@@ -1,20 +1,31 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
+
 const initialState = {
 	headerOpen: false
 };
+
 const store = createContext(initialState);
 const { Provider } = store;
-const StateProvider = ( { children } ) => {
-const [state, dispatch] = useReducer((state, action) => {
-		console.log(action.payload);
+
+const StateProvider = ({ children }) => {
+
+	const [state, dispatch] = useReducer((state, action) => {
 		switch(action.type) {
-		case 'TOGGLE_HEADER':
-			return { ...state, headerOpen : action.payload.headerOpen}
+			case 'TOGGLE_HEADER':
+				return {
+					...state,
+					headerOpen : action.payload.headerOpen
+				}
 			default:
-			return state;
+				return state;
 		}
 	}, initialState);
-	return <Provider value={{ state, dispatch }}>{children}</Provider>;
+
+	return (
+		<Provider value={{ state, dispatch }}>
+			{children}
+		</Provider>
+	);
 };
 
 export { store, StateProvider }

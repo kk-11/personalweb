@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import {store } from '../../../store.js'
-// import s from './styles.module.sass';
+import { joinClasses } from '../../../utils.js';
+import { store  } from '../../../store.js';
 
 import s from './header.module.sass';
-
 
 export default function Header() {
 
@@ -11,21 +10,27 @@ export default function Header() {
 	const { dispatch, state } = globalState;
 
 	const [overed, toggleOver] = useState(false);
+
 	const handleTransition = (evt) => {
 		if (overed && evt.propertyName === 'transform') {
-			dispatch({type : 'TOGGLE_HEADER', payload : { headerOpen : !state.headerOpen }})
+			dispatch({
+				type : 'TOGGLE_HEADER',
+				payload : {
+					headerOpen : !state.headerOpen
+				}
+			})
 		}
 	}
-	console.log(s);
+
 	return (
-		<header>
-			<div className={`menu ${state.headerOpen && s.open}`} />
-			<div className={`headerToggle ${(overed) && 'over'}`} onMouseDown={() => toggleOver(true)} onMouseUp={() => toggleOver(false)}>
-				<div className={`x ${state.headerOpen && 'menuOpen'}`} />
-				<div className='cta'>{state.headerOpen ? 'Close' : 'Hold'}</div>
-				<div className='circleWrap'>
-					<svg className='circle' width="200" height="200">
-						<circle className="center" cx="100" cy="100" r="35" onTransitionEnd={(evt) => handleTransition(evt)}></circle>
+		<header className={s.wrapper}>
+			<div className={joinClasses(s.menu, state.headerOpen && s.open)} />
+			<div className={joinClasses(s.headerToggle, overed && s.over)} onMouseDown={() => toggleOver(true)} onMouseUp={() => toggleOver(false)}>
+				<div className={joinClasses(s.x, state.headerOpen && s.menuOpen)} />
+				<div className={joinClasses(s.cta)}>{state.headerOpen ? 'Close' : 'Hold'}</div>
+				<div className={joinClasses(s.circleWrap)}>
+					<svg className={joinClasses(s.circle)} width="200" height="200">
+						<circle className={joinClasses(s.center)} cx="100" cy="100" r="35" onTransitionEnd={(evt) => handleTransition(evt)}></circle>
 					</svg>
 				</div>
 			</div>

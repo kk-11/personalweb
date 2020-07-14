@@ -17,3 +17,22 @@ export function debounce(func, wait, immediate) {
 		if (callNow) func.apply(context, args);
 	};
 }
+
+
+export function joinClasses() {
+	return [].concat.apply([], arguments).map(expandClasses).filter(e => e).join(' ');
+}
+
+function expandClasses(classes) {
+	if (!classes || typeof classes !== 'object' || Array.isArray(classes)) {
+		return classes;
+	}
+	let mapKey = 's';
+	let map = classes[mapKey];
+	let hasMap = map && typeof map === 'object';
+	let list = Object.keys(classes).filter(key => (!hasMap || key !== mapKey) && classes[key]);
+	if (map) {
+		list = list.map(e => map[e] || e);
+	}
+	return list.join(' ');
+}
