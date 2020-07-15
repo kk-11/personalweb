@@ -18,7 +18,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: {
-								localIdentName: '[local]' 
+								localIdentName: '[name]__[local]'
 							}
 						}
 					},
@@ -47,6 +47,6 @@ module.exports = {
 		new HtmlWebPackPlugin({ template: './src/index.html' })
 	],
 	resolve: {
-		extensions: ['.js', '.jsx', '.sass']
+		extensions: ['.js', '.sass']
 	}
 }

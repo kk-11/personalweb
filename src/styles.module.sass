@@ -16,6 +16,7 @@ body
 .main
 	height: 100vh
 	width: 100vw
+	overflow: hidden
 	transform: rotate(0deg)
 	transition: filter 2s cubic-bezier(.99,.24,.74,.0), transform 500ms
 	&.loading
@@ -32,7 +33,6 @@ body
 		top: 70vh
 		left: 0
 		right: initial
-
 
 @keyframes loading
 	from
