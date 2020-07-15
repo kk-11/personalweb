@@ -36,22 +36,6 @@ export default class TrigCanvas extends React.Component {
 			transformY: 0
 		}
 	}
-	componentDidMount() {
-		window.addEventListener('mousemove', this.handleMouseMove);
-		const { innerWidth: w, innerHeight: h } = window;
-		this.height = h;
-		this.width = w;
-	}
-
-	handleMouseMove = (evt) => {
-		const clampedX = (evt.clientX / this.width).toFixed(2);
-		const clampedY = (evt.clientY / this.height).toFixed(2);
-		this.setState({
-			transformX: clampedX,
-			transformY: clampedY
-		});
-		console.log(clampedX, clampedY);
-	}
 
 	setup = (p5, parent) => {
 		p5.createCanvas(window.innerWidth, window.innerHeight).parent(parent)

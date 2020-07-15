@@ -16,9 +16,10 @@ body
 .main
 	height: 100vh
 	width: 100vw
-	transition: filter 5s cubic-bezier(.74,0,.24,.99)
+	transform: rotate(0deg)
+	transition: filter 2s cubic-bezier(.99,.24,.74,.0), transform 500ms
 	&.loading
-		animation: loading forwards infinite 5s cubic-bezier(.74,0,.24,.99)
+		animation: loading forwards linear infinite 500ms
 		filter: blur(500px)
 	.image, .leaf
 		height: 44vh
@@ -37,4 +38,4 @@ body
 	from
 		transform: rotate(0deg)
 	to
-		transform: rotate(360deg)
+		transform: rotate(180deg)
