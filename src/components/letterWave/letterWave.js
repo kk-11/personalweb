@@ -12,16 +12,14 @@ export default function LetterWave({ option: word, active }) {
 	const letters = word.split('');
 
 	console.log(active);
-	const letterStyle = {
-
-	}
 	return (
 		<div className={joinClasses(s.wrapper, s.active)}>
 			{letters.map((letter, i) => (
 				<span
-					className={joinClasses(s.letter, s[`letter${i}`])}
+					className={joinClasses(s.letter, s[`letter${i}`], active && s.active)}
 					key={i}
-					style={letterStyle}
+					style={{'transitionDelay': `${i*100}ms`}}
+
 				>
 					{letter}
 				</span>

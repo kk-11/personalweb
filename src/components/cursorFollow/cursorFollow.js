@@ -1,6 +1,6 @@
 import React from 'react';
 import { joinClasses } from '../../utils.js';
-
+import blob from '../../../assets/blob.png'
 import s from './cursorFollow.module.sass';
 
 export default class CursorFollow extends React.Component {
@@ -42,7 +42,9 @@ export default class CursorFollow extends React.Component {
 			left: `${xp}px`
 		}
 		return (
-			<div className={s.wrapper} style={style} />
+			<div className={s.wrapper} style={style}>
+				<div className={s.blob} style={{backgroundImage: `url(${blob})`}}/>
+			</div>
 		);
 	}
 

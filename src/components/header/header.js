@@ -21,7 +21,7 @@ export default function Header() {
 					headerOpen : !state.headerOpen
 				}
 			})
-			setTimeout(() => toggleMenu(true), 5000);
+			setTimeout(() => toggleMenu(true), 2000);
 		}
 	}
 	const options = [ 'About', 'Thoughts' ];
