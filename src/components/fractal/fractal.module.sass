@@ -2,18 +2,18 @@
 $size: 50vw
 
 $black: #000
-$red: #ecf0f1
+$red: magenta
 $white: #333
 $onyx: #ecf0f1
-$orange: #ecf0f1
+$orange: cyan
 
 @mixin box-center
 	display: flex
-	justify-content: center
-	align-items: center
+	justify-content: flex-start
+	align-items: flex-start
 	background: linear-gradient(to right, rgba($orange,0.1), rgba($red, 0.15))
-	box-shadow: inset 4px -4px 10px rgba($white,0.5)
-	border: 1px solid rgba($white,0.6)
+	box-shadow: inset 4px -4px 10px rgba($onyx,0.5)
+	// border: 1px solid rgba($white,0.6)
 	border-radius: 1%
 
 .container
@@ -38,6 +38,7 @@ $orange: #ecf0f1
 	position: relative
 	width: $size
 	height: $size
+	transform: rotate(45deg)
 	.clockwise, .aclockwise
 		position: absolute
 		width: 100%
@@ -48,10 +49,10 @@ $orange: #ecf0f1
 		width: 80%
 		height: 80%
 	.clockwise, .clockwise *
-		animation: spinClockwise 25s infinite
+		animation: spinClockwise 20s infinite cubic-bezier(.74,0,.24,.99)
 
 	.aclockwise, .aclockwise *
-		animation: spinAclockwise 50s infinite
+		animation: spinAclockwise 20s infinite cubic-bezier(.74,0,.24,.99)
 
 
 @media(min-width: 1024px)
