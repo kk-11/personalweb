@@ -4,6 +4,7 @@ import Header from '../src/components/header/header.js';
 import TrigCanvas from '../src/components/trigCanvas/trigCanvas.js';
 import WordGallery from '../src/components/wordGallery/wordGallery.js';
 import CursorFollow from '../src/components/cursorFollow/cursorFollow.js';
+import Fractal from '../src/components/fractal/fractal.js';
 import { StateProvider } from './store.js'
 import { joinClasses } from './utils.js';
 import rock from '../assets/rock.jpg'
@@ -44,6 +45,7 @@ export default class App extends React.Component {
 ReactDOM.render(
 	<StateProvider>
 		<App />
+		<Fractal />
 	</StateProvider>,
 	document.getElementById('app')
 );

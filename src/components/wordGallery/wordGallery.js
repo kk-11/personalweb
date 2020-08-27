@@ -3,7 +3,7 @@ import { joinClasses } from '../../utils.js';
 
 import s from './wordGallery.module.sass';
 
-const words = [ 'Welcome', 'words', 'Memes', 'super', 'xytakjflkajf', 'finalForTesting' ];
+const words = [ 'I\'m', 'not', 'sure', 'what', 'content', 'to', 'put', 'here' ];
 
 export default class WordGallery extends React.Component {
 	constructor(props) {
