@@ -25,6 +25,7 @@ export default class App extends React.Component {
 		const { innerWidth: w, innerHeight: h } = window;
 		this.height = h;
 		this.width = w;
+		window.addEventListener('touchmove', (evt) => evt.preventDefault());
 	}
 
 	render() {
