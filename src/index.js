@@ -36,8 +36,8 @@ export default class App extends React.Component {
 				<TrigCanvas />
 				<WordGallery />
 				{cursorFollow && <CursorFollow />}
-				<img className={s.image} src={rock} />
-				<img className={s.leaf} src={leaf} />
+				{false && <img className={s.image} src={rock} />}
+				{false && <img className={s.leaf} src={leaf} />}
 			</main>
 		)
 	}

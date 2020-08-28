@@ -23,12 +23,13 @@ export default function Header() {
 			})
 			setTimeout(() => toggleMenu(true), 2000);
 		}
+		if (!state.headerOpen) toggleMenu(false);
 	}
 	const options = [ 'About', 'Thoughts' ];
 	return (
 		<header className={s.wrapper}>
 			<div className={joinClasses(s.menu, state.headerOpen && s.open)}>
-				{options.map(option => <LetterWave key={option} option={option} active={activateMenu}/>)}
+				{options.map(word => <LetterWave key={word} word={word} active={activateMenu}/>)}
 			</div>
 			<div className={joinClasses(s.headerToggle, overed && s.over)} onMouseDown={() => toggleOver(true)} onMouseUp={() => toggleOver(false)}>
 				<div className={joinClasses(s.x, state.headerOpen && s.menuOpen)} />

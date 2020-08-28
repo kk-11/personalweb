@@ -56,6 +56,56 @@ export default function Fractal() {
 						</div>
 					</div>
 				</div>
+				<div className={s.scale}>
+					<div>
+						<div>
+							<div>
+								<div>
+									<div>
+										<div>
+											<div>
+												<div>
+													<div>
+														<div>
+															<div>
+																<div></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className={s.ascale}>
+					<div>
+						<div>
+							<div>
+								<div>
+									<div>
+										<div>
+											<div>
+												<div>
+													<div>
+														<div>
+															<div>
+																<div></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	)
