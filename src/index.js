@@ -20,7 +20,6 @@ export default class App extends React.Component {
 			cursorFollow: true
 		}
 	}
-	//test commit
 	componentDidMount() {
 		setTimeout(() => this.setState({ loading: false }), 5000);
 		const { innerWidth: w, innerHeight: h } = window;
