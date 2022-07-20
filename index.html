@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <title>Killian de Buitleir</title>
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overscroll-behavior: none;
+      }
+      main {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 1.6em;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        text-align: right;
+        font-family: monospace;
+        letter-spacing: 0.86em;
+        font-weight: 100;
+        text-shadow: 1px 1px 10px white;
+      }
+
+      #showmore {
+        font-size: 2em;
+        cursor: pointer;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        transition: transform 333ms, opacity 333ms;
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      #showmore.active {
+        transform: rotate(45deg);
+        opacity: 0;
+      }
+
+      #moreinfo {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 333ms;
+        text-align: right;
+      }
+      #moreinfo.active {
+        max-height: 300px;
+        overflow: hidden;
+      }
+      #email {
+        display: block;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.6),
+          rgba(51, 51, 51, 0.5)
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        pointer-events: none;
+        perspective: 1000px;
+      }
+      .nothing {
+        color: rgba(236, 240, 241, 0.6);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      .wrapper {
+        position: relative;
+        width: 50vw;
+        height: 50vw;
+        transform: rotate(45deg);
+        animation: rotateAround 21s infinite alternate
+          cubic-bezier(0.74, 0, 0.24, 0.99);
+      }
+      .clockwise,
+      .aclockwise,
+      .scale,
+      .ascale {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      div > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          to right,
+          rgba(0, 255, 255, 0.1),
+          rgba(255, 0, 255, 0.15)
+        );
+        box-shadow: inset 4px -4px 10px rgba(236, 240, 241, 0.5);
+      }
+
+      .clockwise,
+      .clockwise * {
+        animation: spinClockwise 21s infinite cubic-bezier(0.74, 0, 0.24, 0.99);
+      }
+      .aclockwise,
+      .aclockwise * {
+        animation: spinAclockwise 21s infinite cubic-bezier(0.74, 0, 0.24, 0.99);
+      }
+      .scale,
+      .scale * {
+        animation: spinClockwise 13s infinite alternate
+          cubic-bezier(0.74, 0, 0.24, 0.99);
+      }
+      .ascale,
+      .ascale * {
+        animation: spinAclockwise 13s infinite alternate
+          cubic-bezier(0.74, 0, 0.24, 0.99);
+      }
+      @media (min-width: 1024px) {
+        .container {
+          display: none;
+        }
+      }
+      @keyframes spinClockwise {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinAclockwise {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+      @keyframes rotateAround {
+        from {
+          transform: scale(1) rotate(45deg);
+        }
+        to {
+          transform: scale(1.2) rotate(45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="nothing">nothing to see here...</p>
+      <div class="wrapper">
+        <div class="clockwise">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div>
+                              <div>
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aclockwise">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div>
+                              <div>
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scale">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div>
+                              <div>
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ascale">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div>
+                              <div>
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main>
+      <h1>Killian de Buitleir</h1>
+      <h2>Frontend Developer</h2>
+      <button id="showmore" onclick="showmore()">+</button>
+      <section id="moreinfo">
+        <p>
+          Currently based in Stockholm but open to new opportunities
+          internationally, remote or onsite.
+        </p>
+        <a id="email" href="mailto:killian.debuitleir@gmail.com"
+          >killian.debuitleir@gmail.com</a
+        >
+        <a href="tel:+460721413509 ">+460721413509</a>
+      </section>
+    </main>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
